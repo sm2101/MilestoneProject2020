@@ -1,107 +1,60 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Create an Account</title>
-<style type="text/css">
-	.back{
-		background-color:rgba(184, 255, 196, 0.884);
-	}
-	.box{
-		background-color:green ;
-		color:white;
-		width: 70%;
-    	padding: 50px;
-    	margin-right: auto;
-    	margin-left: auto;
-	}
-	.high1{
-			color:black
-		}
-		.lab{
-			color:black;
-			font-size:25px;
-		}
-		.inp{
-			width: 300px;
-			height: 20px
-		}
-		.check{
-			width: 25px;
-			height: 25px
-		}
-		.checkinp{
-			height:800px;
-			width:200px;
-			left: 250;
-			top: 250;
-
-		}
-</style>
-</head>
-<body class="back">
-
-	<div class="box">
-		<div>
-			<img src="/Users/akarshitjain/Desktop/Anndata/images/anndatalogo.jpg" align=right style=width="350px" height="350px" />
-		<img src="/Users/akarshitjain/Desktop/Anndata/images/usercreate.jpg" align="center" style=width="100px" height="100px" />
-		<h1 class="high1"> Create an Account
-		</h1>
-		<form>
-
-  		<label for="name" class="lab">
-  			Enter Username:
-  		</label>
-  		<br>
-  		<input type="text" class="inp" id="name" name="name">
-  		<br>
-  		<br>
-  		<label for="Password" class="lab">
-  			Enter Password:
-  		</label>
-  		<br>
-  		<input type="Password" class="inp" id="Password" name="Password">
-  		<br>
-  		<br>
-  		<label for="Password" class="lab">
-  			Enter Confirm Password:
-  		</label>
-  		<br>
-  		<input type="Password" class="inp"  id="Password" name="Password">
- 		<br>
- 		<br>
- 		<label for="number" class="lab">
-  			Enter Phone Number:
-  		</label><br>
-  		<input type="number" class="inp" id="number" name="number">
-		<br>
-		<br>
-  		<label for="number" class="lab">
-  			Enter GSTIN number:
-  		</label>
-  		<br>
-  		<br>
-  		<input type="number" class="inp" id="number" name="number">
- 		<p class="lab">
- 			Enter your Gender:
- 		</p>
-  		&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" id="male" name="gender" value="male">
-  		<label for="male">
-  			Male
-  		</label>
-  		<br>
-  		<br>
-  		&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" id="female" name="gender" value="female">
-  		<label for="female">
-  			Female
-  		</label>
-  		<br>
-  		<br>
-  		<label for="checkbox" name="checkbox" id="agree" class="lab"/>  I have read and agree to the Terms and Conditions and Privacy Policy
-        <input type="checkbox" name="checkbox" id="agree" class="check" />
-        <br>
-        <input type="Submit" name="Submit" value="Submit" class="checkinp"  />
-		</form>
+<%-include('partials/header.ejs') %>
+    <link rel = "stylesheet" href = "stylesheets/signin.css">
+    <title>City Navigator: Signup</title>
+  </head>
+  <body>
+<%-include('partials/navbar_new.ejs') %>
+<div class = "container mt-5" id = "sigin_form">
+	<form action = "/signup" method = "POST">
+  <div class="form-group">
+    <label for="uEmail1">Phone Number</label>
+    <input type="Number" class="form-control" id="uEmail1" placeholder = "Your Phone Number" name = "username" required>
+  </div>
+	<div class="form-group">
+    <label for="uname">Username</label>
+    <input type="text" class="form-control" id="uname" placeholder = "Username" name = "uname" required>
+  </div>
+	<div class="form-group">
+    <label for="uDOB">Date of Birth</label>
+    <input type="date" class="form-control" id="uDOB" placeholder = "Date of Birth" name = "uDOB" required>
+  </div>
+	<div class="form-group">
+    <label for="uGST">GSTIN Number</label>
+    <input type="text" class="form-control" id="uGST" placeholder = "GSTIN Number" name = "uGST" required>
+  </div>
+	<div class="form-group">
+    <label for="uOcc">Occupation</label>
+    <select class="form-control" id="uOcc" name = "uOcc" required>
+		<option value = "Consumer">Consumer</option>
+		<option value = "Farmer">Farmer</option>
+		<option value = "cStore">Cold Storager</option>
+		<option value = "tService">Transport Service</option>
+		<option value = "wSale">Wholesaler</option>
+	</select>
+  </div>
+  <div class="form-group">
+    <label for="upass">Password</label>
+	  <div class = "input-group">
+	    <input type="password" class="form-control" id="upass" placeholder = "password" name = "password" required>
+			<span id = "icon"><i class="far fa-eye p-2" ></i></span>
+	  </div>
+  </div>
+	<div class="progress">
+  		<div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
 		</div>
 	</div>
-</body>
-</html>
+		<p id="password-strength-text"></p>
+  <div class="form-group">
+    <label for="cpass">Confirm Password</label>
+    <input type="password" class="form-control" id="cpass" placeholder = "password" name = "cpassword" required>
+  </div>
+  <button type="submit" class="btn btn-primary " disabled>Sign Up</button>
+</form>
+</div>
+	  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	  <script src="https://kit.fontawesome.com/10b4447403.js" crossorigin="anonymous"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.2.0/zxcvbn.js"></script>
+	  <script src = "/scripts/signup.js"></script>
+<%-include('partials/footer.ejs') %>

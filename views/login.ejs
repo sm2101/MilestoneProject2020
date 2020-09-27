@@ -1,77 +1,28 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Login Page</title>
-  <style type="text/css">
-  .back{
-    background-color:rgba(184, 255, 196, 0.884);
-  }
-  .box{
-    background-color:green ;
-    color:white;
-    width: 80%;
-      padding: 50px;
-      margin-right: auto;
-      margin-left: auto;
-  }
-  .high1{
-      color:black
-    }
-    .lab{
-      color:black;
-      font-size:25px;
-    }
-    .inp{
-      width: 300px;
-      height: 20px
-    }
-    .check{
-      width: 20px;
-      height: 20px
-    }
-    .checkinp{
-      height:100px;
-      width:200px;
-    }
-</style>
-</head>
-<body class="back">
-	<div class="box">
-		<div>
-      <img src="/Users/akarshitjain/Desktop/Anndata/images/anndatalogo.jpg" align="right" style= width="300px" height="300px" />
-		  <h1 class="high1"> Login
-		  </h1>
-		  <form>
-  		<label for="name" class="lab">
-  			Username:
-  		</label>
-  		<br>
-  		<input type="text" class="inp" id="name" name="name">
-  		<br>
-  		<br>
-  		<label for="Password" class="lab">
-  			Password:
-  		</label><br>
-  		<input type="Password" class="inp" id="Password" name="Password">
-  	<br>
-    <br>
-    <label for="checkbox" name="checkbox" id="agree" class="lab">
-      Remember Me
-    </label>
-      <input type="checkbox" name="checkbox" id="agree" class="check" />
-      <br>
-      <br>
-    <label for="Submit" name="Submit" id="Submit" style=" left: 250; top: 250;">
-    </label>
-        <input type="Submit" name="Submit" value="Submit" class="checkinp" />
-        <br>
-        <br>
-        <a class="small" href="anndataSignUP.html" class="lab" ; >
-          Don't have an account? Register Now!
-        </a>
-        <br>
-		</form>
-		</div>
-	</div>
-</body>
-</html>
+<%-include('partials/header.ejs') %>
+    <link rel = "stylesheet" href = "stylesheets/signin.css">
+    <title>City Navigator: Sigin</title>
+  </head>
+  <body>
+<%-include('partials/navbar_new.ejs') %>
+<div class = "container mt-5" id = "sigin_form">
+	<form action = "/signin" method = "POST">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name = "username">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" name = "password">
+  </div>
+  <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Remember Me</label>
+  </div>
+  <button type="submit" class="btn btn-primary">Signin</button>
+</form>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+   <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="crossorigin=""></script>
+<%-include('partials/footer.ejs') %>
