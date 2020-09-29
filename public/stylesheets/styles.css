@@ -10,6 +10,23 @@ https://coolors.co/f7fff7-343434-2f3061-ffe66d-a1c6d7
 
 /* Global styles
 ------------------------------------*/
+.test{
+	border:2px dashed black;
+	border-radius:12.5px;
+	
+}
+#cont{
+	max-width:85%;
+	border-radius:2.5rem;
+	background-color:rgba(245, 255, 237, 0.8);
+	height:50rem;
+}
+@font-face {
+font-family: 'Samarkan Normal';
+font-style: normal;
+font-weight: normal;
+src: local('Samarkan Normal'), url('fonts/SAMARN__.woff') format('woff');
+}
 html {
   box-sizing: border-box;
 }
@@ -17,12 +34,18 @@ html {
   box-sizing: inherit;
 }
 body {
+	background:url("../backg.png");
   color: #343434;
   margin: 0;
   padding: 0;
 font-family: 'Lato', sans-serif;
   font-size: 20px;
   line-height: 1.5;
+	height:100%;
+	background-attachment: fixed;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 img {
   width: 300px;
@@ -52,14 +75,18 @@ h2 {
   font-weight: 400;
   margin: 0;
 }
+.container-fluid{
+	padding:0;
+}
 .content-wrap {
-  max-width: 800px;
+  max-width: 100%;
   width: 85%;
   margin: 0 auto;
   padding: 60px 0;
 
 }
 h3 {
+	font-family: 'Caveat',cursive;
   margin-bottom: 0;
 }
 .item-details h3 + p {
@@ -78,13 +105,51 @@ h3 {
 }
 /* Profile
 ------------------------------------*/
+.img-cont .img{
+	width:17rem;
+	height:17rem;
+	border-radius:50%;
+	overflow:hidden;
+	border:2px solid black;
+	
+}
+.img-cont a img{
+	width:4rem;
+}
+.img-cont .img1{
+	position:relative;
+	top:1rem;
+	
+}
+.img-cont .img2{
+	position:relative;
+	top:-1.5rem;
+	
+}
+.img-cont .img3{
+	position:relative;
+	top:-10rem;
+	
+}
+.img-cont .img4{
+	position:relative;
+	top:-2rem;
+	
+}
+.img-cont div h3{
+	text-align:left;
+}
+.pt-c{
+	padding-top:6rem;
+}
 header {
-  background:#F7FFF7;
+	
+  background:rgba(217, 255, 217, 0.8);
   color: #FF8F1C;
 
 }
 .box{
-  background-image: url(../images/backg.png);
+  background-image: url(backg.png);
   background-size: cover;
   background-position:center;
 }
@@ -104,15 +169,17 @@ header {
   font-size: 25px;
   font-weight: 500;
 }
-
+#nav{
+	background-color:rgba(217, 255, 217, 1.0);
+}
 /* Download our app
 ------------------------------------*/
 .downapp{
-  background: #F7FFF7;
+  background: rgba(247, 255, 247, 0.8);
   color: #250E62;
 }
 .downdownapp{
-  max-width: 800px;
+  max-width: 100%;
   width: 85%;
   margin: 0 auto;
   /* padding: 60px 0; */

@@ -29,6 +29,12 @@ passport.deserializeUser(user.deserializeUser());
 app.get("/",(req,res) =>{
     res.render("home",{currentUser:req.user});
 })
+app.get("/team",(req,res) =>{
+    res.render("team",{currentUser:req.user});
+})
+app.get("/tc",(req,res) =>{
+    res.render("tandc",{currentUser:req.user});
+})
 
 // ------------------Signin Routes --------------
 
@@ -38,7 +44,8 @@ app.get("/signin",(req,res) =>{
 app.post("/signin",passport.authenticate("local",{
 	successRedirect: "/",
 	failureRedirect: "/signin",
-	failureFlash: true}),
+	// failureFlash: true
+}),
 	(req,res) =>{
 })
 
