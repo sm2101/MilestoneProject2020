@@ -1,0 +1,144 @@
+<%-include('partials/header.ejs') %>
+    <title>ANNDATA | <%= currentUser.uname %></title>
+    <link rel="stylesheet" href="stylesheets/styles1.css">
+  </head>
+  <body>
+	      <nav class="navbar navbar-expand-lg navbar-light transparent sticky-top" id = "nav">
+        <a class="navbar-brand" href="/" style="font-family:'Samarkan Normal';font-weight:normal;font-size:42px">AnnData</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+			 <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+			  <li class="nav-item ">
+              <a class="nav-link" href="/team">Team</a>
+            </li>
+			  <li class="nav-item ">
+              <a class="nav-link" href="/tc">Terms & Conditions</a>
+            </li>
+          </ul>
+		 <ul class = "navbar-nav ml-auto">
+			<li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Welcome,<%=currentUser.uname%>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/logout">Logout</a>
+              </div>
+            </li>
+		 </ul>
+        </div>
+      </nav>
+	  <div class="container-fluid p-0 h-100 w-100 position-absolute" style = "top:0;">
+	  	<div class="row h-100 w-100 m-0 justify-content-around align-items-center">
+	  		<div class="col-3 border h-75 w-100 overflow-auto">
+	  			<div class="container-fluid p-0 h-100 w-100">
+	  				<div class="row m-0 w-100 h-auto">
+	  					<div class="col-12 w-100 h-auto d-flex justify-content-around pt-2 align-items-center">
+	  						<div class="dp"></div>
+							<div class="dn"><%= currentUser.uname %></div>
+	  					</div>
+	  				</div>
+					<div class="row m-0 w-100 h-auto"><!--User info-->
+	  					<div class="col-12 w-100 h-auto d-flex justify-content-around pt-2 align-items-center">
+	  						<div class="userInfo d-flex justify-content-center align-items-center">
+	  							<p>
+									Phone No.: <span id = "num"><%= currentUser.username %></span>
+								</p>
+								<p>
+									DOB: <%= currentUser.dob %>
+								</p>
+								<p>
+									Account Type: <%= currentUser.occ %>
+								</p>
+	  						</div>
+	  					</div>
+	  				</div>
+					<%if(currentUser.occ != 'Consumer'){%>
+					<div class="row m-0 w-100 h-auto"><!--User info-->
+	  					<div class="col-12 w-100 h-auto d-flex justify-content-around pt-2 align-items-center">
+	  						<div class="d-flex justify-content-center align-items-center w-100">
+	  							<table class = "table table-striped w-100">
+									<thead>
+										<tr>
+										  <th scope="col">Item</th>
+										  <th scope="col">Qty(Kg)</th>
+										  <th scope="col">Price(/Kg)</th>
+										  <th scope="col">Action</th>
+										</tr>
+									</thead>
+									<tbody id = "list_data">
+										
+									</tbody>
+								</table>
+	  						</div>
+	  					</div>
+	  				</div>
+					
+					
+					<div class="row m-0 w-100 h-auto"><!--add Items-->
+						<div class="col-12">
+							<button type = "button" class = "w-100 addbtn" id = "addBtn">
+								Add More Items
+							</button>
+						</div>
+	  					<div class="col-12 w-100 h-auto d-flex justify-content-around pt-2 align-items-center">
+	  						<div class="addData d-flex justify-content-center align-items-center w-100 h-0" id = "addForm">
+	  							<form class = "w-100">
+									<div class="form-group">
+										<input id = "usrId" value = "<%= currentUser['_id'] %>" class = "form-control d-none">
+									</div>
+									<div class="form-group">
+										<label for = "item">Item Name</label>
+										<input type = "text" placeholder = "Item Name" class = "form-control" id = "item" required>
+									</div>
+									<div class="form-group">
+										<label for = "qty">Quantity(Kg)</label>
+										<input type = "Number" placeholder = "Quantity(Kg)" class = "form-control" id = "qty" required>
+									</div>
+									<div class="form-group">
+										<label for = "price">Price(/Kg)</label>
+										<input type = "Number" placeholder = "Price(/Kg)" class = "form-control" id = "price" required>
+									</div>
+									<button type = "button" class = "btn btn-primary" onclick = "addData()">
+										Submit
+									</button>
+								</form>
+	  						</div>
+	  					</div>
+	  				</div>
+					<%}%>
+	  			</div>
+	  		</div>
+	  		<div class="col-8 border h-75 w-100">
+	  			<div class="row m-0 w-100 h-auto"><!--User info-->
+	  					<div class="col-12 w-100 h-auto d-flex justify-content-around pt-2 align-items-center">
+	  						<div class="d-flex justify-content-center align-items-center w-100">
+	  							<table class = "table table-striped w-100">
+									<thead>
+										<tr>
+											<th scope="col">#</th>
+										  <th scope="col">Item</th>
+										  <th scope="col">Qty(Kg)</th>
+										  <th scope="col">Price(/Kg)</th>
+										</tr>
+									</thead>
+									<tbody id = "d">
+										
+									</tbody>
+								</table>
+	  						</div>
+	  					</div>
+	  				</div>
+	  		</div>
+	  	</div>
+	  </div>
+	  
+	  
+<%-include('partials/scripts.ejs') %>
+	  <script src = "/scripts/data.js"></script>
+<%-include('partials/footer.ejs') %>

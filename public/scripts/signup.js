@@ -1,3 +1,4 @@
+let isVerified = false;
 $('#icon').click(function(){
 	  $('#icon i').toggleClass("fa-eye fa-eye-slash");
 	var p_input = $('#upass');
@@ -41,6 +42,36 @@ $("#cpass").keyup(function(){
 	} else {
 		$(this).css("border","1px solid grey");
 		$(this).css("box-shadow","0 0 blue ");
-		$("button[type='submit']").removeAttr("disabled");
+			$("button[type='submit']").removeAttr("disabled");
 	}
+})
+
+$('#verify-btn').click(()=>{
+	var num = $('#uNum').val();
+	var otp = Math.floor(Math.random()*10000);
+	const settings = {
+	"async": true,
+	"crossDomain": true,
+	"url": "https://d7sms.p.rapidapi.com/secure/send",
+	"method": "POST",
+	"headers": {
+		"content-type": "application/json",
+		"authorization": "Basic a3FtajU1ODc6VTFVZFp0dFM=",
+		"x-rapidapi-key": "659a3ddbfamsh24649b9d7ac0ed5p1d40efjsnd41bc3cee08a",
+		"x-rapidapi-host": "d7sms.p.rapidapi.com"
+	},
+	"processData": false,
+	"data": `{\r
+    \"content\": \"${otp}\",\r
+    \"from\": \"ANNDATA\",\r
+    \"to\": 91${num}\r
+	}`
+	};
+
+	$.ajax(settings).done(function (response) {
+		var conf = prompt("Enter the otp")
+		if(conf == otp){
+			isVerified = true;
+		}
+	});
 })

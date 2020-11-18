@@ -7,10 +7,11 @@ const express = require('express'),
 	  passport = require("passport"),
 	  local = require("passport-local").Strategy,
 	  passLocalMong = require("passport-local-mongoose"),
+	  Task = require('./api/models/apiModels'),
 	  user = require("./models/users"),
       port = process.env.PORT || 3000;
 // --------------------------------------------
-mongoose.connect("mongodb://localhost:27017/anndata_data",{useNewUrlParser: true,useUnifiedTopology: true});
+	mongoose.connect("mongodb://localhost:27017/anndata_data",{useNewUrlParser: true,useUnifiedTopology: true});
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine','ejs');
 app.use(express.static("public"));
@@ -25,9 +26,16 @@ app.use(passport.session());
 passport.use(new local(user.authenticate()));
 passport.serializeUser(user.serializeUser());
 passport.deserializeUser(user.deserializeUser());
+var apiRoutes = require('./api/routes/apiRoutes'); //importing route
+apiRoutes(app);
+
 // --------------------------------------------
 app.get("/",(req,res) =>{
-    res.render("home",{currentUser:req.user});
+	if(req.user){
+		res.redirect("/user");
+	} else{
+    	res.render("home",{currentUser:req.user});
+	}
 })
 app.get("/team",(req,res) =>{
     res.render("team",{currentUser:req.user});
@@ -35,7 +43,12 @@ app.get("/team",(req,res) =>{
 app.get("/tc",(req,res) =>{
     res.render("tandc",{currentUser:req.user});
 })
-
+app.get("/user",(req,res) =>{
+	res.set('Access-Control-Allow-Origin', '*');
+	res.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+	res.render("profile",{currentUser:req.user});
+	
+})
 // ------------------Signin Routes --------------
 
 app.get("/signin",(req,res) =>{
@@ -70,7 +83,7 @@ app.post("/signup",(req,res) =>{
 			return res.render('signup',{currentUser:req.user})
 		}
 		passport.authenticate("local")(req,res,function(){
-			res.redirect("/");
+			res.redirect("/user");
 		});
 	});
 })

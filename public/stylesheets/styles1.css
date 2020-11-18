@@ -10,10 +10,38 @@ https://coolors.co/f7fff7-343434-2f3061-ffe66d-a1c6d7
 
 /* Global styles
 ------------------------------------*/
+.h-0{
+	height:0 !important;
+}
+.addData{
+	transition:0.2s;
+	overflow:hidden;
+	height:auto;
+}
 .test{
 	border:2px dashed black;
 	border-radius:12.5px;
 	
+}
+.dp{
+	width:9rem;
+	height:9rem;
+	border:2px solid black;
+	border-radius:50%;
+}
+.dn{
+	font-size:2rem;
+	text-align:left;
+	
+}
+.userInfo{
+	flex-direction:column;
+	width:inherit;
+	height:15rem;
+	font-size:2rem;
+}
+.userInfo p{
+	width:100%;
 }
 #cont{
 	max-width:85%;
@@ -26,6 +54,10 @@ font-family: 'Samarkan Normal';
 font-style: normal;
 font-weight: normal;
 src: local('Samarkan Normal'), url('fonts/SAMARN__.woff') format('woff');
+}
+html,body{
+	height:100%;
+	width:100%;
 }
 html {
   box-sizing: border-box;

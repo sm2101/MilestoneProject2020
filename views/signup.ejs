@@ -8,7 +8,12 @@
 	<form action = "/signup" method = "POST">
   <div class="form-group">
     <label for="uEmail1">Phone Number</label>
-    <input type="Number" class="form-control" id="uEmail1" placeholder = "Your Phone Number" name = "username" required>
+    <div class="input-group">
+    	<input type="Number" class="form-control" id="uNum" placeholder = "Your Phone Number" name = "username" required>
+	   <div class="input-group-append">
+			<button class="btn btn-secondary" type="button" id="verify-btn">Verify</button>
+	  </div>
+    </div>
   </div>
 	<div class="form-group">
     <label for="uname">Username</label>
