@@ -1,0 +1,33 @@
+name: ANNDATA
+description: LOGIN,SIGN-UP,WELCOME PAGE.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.1.0<3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^0.1.2
+  animated_text_kit: ^2.2.0
+  firebase_auth: ^0.18.0+1
+  cloud_firestore: ^0.14.0+2
+  firebase_core: ^0.5.0
+  modal_progress_hud: ^0.1.3
+  rflutter_alert: ^1.1.0
+  flutter_signin_button: ^1.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - image/
+    - images/
+    - google/
